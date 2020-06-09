@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+
+if [ -n $DROPBOX_API_TOKEN ]; then
+  echo "Dropbox"
+  exit 0
+else
+  exit 1
+fi
