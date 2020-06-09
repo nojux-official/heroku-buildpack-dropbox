@@ -33,7 +33,7 @@ cd \$(dirname \$0)/..
 
 pre=\${DROPBOX_DESTINATION_PREFIX:-'/'}
 
-bin/\$DROPBOX_UPLOADER_SCRIPT_NAME download \${pre}backup.zip 
+bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'} download \${pre}backup.zip 
 unzip backup.zip
 rm backup.zip
 EOF
@@ -45,14 +45,14 @@ cat <<EOF > $backup_script
 #!/usr/bin/env bash
 
 cd \$(dirname \$0)/..
-uploader=bin/\$DROPBOX_UPLOADER_SCRIPT_NAME
+uploader=bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'}
 
 pre=\${DROPBOX_DESTINATION_PREFIX:-'/'}
 
 zip -r backup.zip \$DROPBOX_FILES_TO_BACKUP;
-$uploader delete \${pre}backup.zip
-$uploader upload backup.zip \${pre}backup.zip
-$uploader copy \${pre}backup.zip \${pre}backup\$(date "+%Y.%m.%d-%H:%M:%S").zip
+\$uploader delete \${pre}backup.zip
+\$uploader upload backup.zip \${pre}backup.zip
+\$uploader copy \${pre}backup.zip \${pre}backup\$(date "+%Y.%m.%d-%H:%M:%S").zip
 rm backup.zip
 EOF
 chmod +x $backup_script
