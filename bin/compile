@@ -23,7 +23,7 @@ chmod +x $du_script
 # more info here https://github.com/andreafabrizi/Dropbox-Uploader
 
 topic Writing dropbox scripts
-$restore_script=$1/bin/${DROPBOX_RESTORE_SCRIPT_NAME:-'restore_dropbox.sh'}
+restore_script=$1/bin/${DROPBOX_RESTORE_SCRIPT_NAME:-'restore_dropbox.sh'}
 say $restore_script
 mkdir -p $1/bin
 cat <<EOF > $restore_script
