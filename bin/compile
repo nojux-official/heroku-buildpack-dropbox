@@ -10,10 +10,6 @@ function topic {
 
 BP_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
 
-
-topic Configuring Dropbox Uploader config file...
-echo "OAUTH_ACCESS_TOKEN=${DROPBOX_API_TOKEN}" > $1/.dropbox_uploader
-
 topic Adding Dropbox Sync...
 du_script=$1/bin/${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'}
 mkdir -p $1/bin
@@ -73,3 +69,11 @@ sleep \$DROPBOX_BACKUP_DELAY
 done
 EOF
 chmod +x $start_script
+
+topic Writing screen profile script
+mkdir -p $1/.profile.d
+cat <<EOF > $1/.profile.d/000_dropbox.sh
+#!/usr/bin/env bash
+
+echo "OAUTH_ACCESS_TOKEN=\${DROPBOX_API_TOKEN}" > $HOME/.dropbox_uploader
+EOF
