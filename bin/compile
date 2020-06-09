@@ -41,7 +41,7 @@ chmod +x $restore_script
 
 backup_script=$1/bin/${DROPBOX_BACKUP_SCRIPT_NAME:-'backup_dropbox.sh'}
 say $backup_script
-cat <<EOF > 
+cat <<EOF > $backup_script
 #!/usr/bin/env bash
 
 cd \$(dirname \$0)/..
@@ -59,7 +59,7 @@ chmod +x $backup_script
 
 start_script=$1/bin/${DROPBOX_STARTUP_SCRIPT_NAME:-'start_sync_dropbox.sh'}
 say $start_script
-cat <<EOF > 
+cat <<EOF > $start_script
 #!/usr/bin/env bash
 
 cd \$(dirname \$0)
