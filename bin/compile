@@ -20,7 +20,13 @@ function export_env_dir {
   fi
 }
 
+env
+
+echo '------'
+
 export_env_dir $ENV_DIR '^(DROPBOX_.*)$'
+
+env
 
 BP_DIR="$(cd "$(dirname "$0")"/.. && pwd)"
 
