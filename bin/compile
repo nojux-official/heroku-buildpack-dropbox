@@ -67,14 +67,12 @@ rm backup.zip
 EOF
 chmod +x $backup_script
 
-start_script=$1/bin/${DROPBOX_STARTUP_SCRIPT_NAME:-'start_sync_dropbox.sh'}
+start_script=$1/bin/${DROPBOX_STARTUP_SCRIPT_NAME:-'start_continuous_backup_dropbox.sh'}
 say $start_script
 cat <<EOF > $start_script
 #!/usr/bin/env bash
 
 cd \$(dirname \$0)
-
-\$DROPBOX_RESTORE_SCRIPT_NAME
 
 while true
 do
