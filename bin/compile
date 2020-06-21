@@ -43,7 +43,7 @@ cd \$(dirname \$0)/..
 
 pre=\${DROPBOX_DESTINATION_PREFIX:-'/'}
 
-bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'} download \${pre}backup.zip 
+\$HOME/bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'} download \${pre}backup.zip 
 unzip backup.zip
 rm backup.zip
 EOF
@@ -55,7 +55,7 @@ cat <<EOF > $backup_script
 #!/usr/bin/env bash
 
 cd \$(dirname \$0)/..
-uploader=bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'}
+uploader=\$HOME/bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'}
 
 pre=\${DROPBOX_DESTINATION_PREFIX:-'/'}
 
@@ -77,7 +77,7 @@ cd \$(dirname \$0)
 while true
 do
 sleep \$DROPBOX_BACKUP_DELAY
-$DROPBOX_BACKUP_SCRIPT_NAME
+\$HOME/bin/\$DROPBOX_BACKUP_SCRIPT_NAME
 done
 EOF
 chmod +x $start_script
