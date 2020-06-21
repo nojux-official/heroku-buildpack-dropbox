@@ -59,7 +59,7 @@ uploader=bin/\${DROPBOX_UPLOADER_SCRIPT_NAME:-'dropbox_uploader.sh'}
 
 pre=\${DROPBOX_DESTINATION_PREFIX:-'/'}
 
-zip -r backup.zip \$DROPBOX_FILES_TO_BACKUP;
+zip -r backup.zip \${DROPBOX_FILES_TO_BACKUP:-'.'};
 \$uploader delete \${pre}backup.zip
 \$uploader upload backup.zip \${pre}backup.zip
 \$uploader copy \${pre}backup.zip \${pre}backup\$(date "+%Y.%m.%d-%H:%M:%S").zip
